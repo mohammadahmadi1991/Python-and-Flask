@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>create post</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="px-6 lg:px-20">
+    <section class="md:flex md:justify-center my-2">
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
+    </section>
+    <div class="md:flex md:justify-center w-full lg:w-80">
+      <form class="flex flex-col w-full" action="/add_post" method="post">
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="title"
+          required
+          class="outline-none mb-3 border py-2 px-2 w-full text-gray-600 placeholder:text-gray-300 border-gray-300 rounded bg-gray-100 focus:border-blue-800"
+        />
+
+        <input
+          class="outline-none mb-3 border py-2 px-2 w-full text-gray-600 placeholder:text-gray-300 border-gray-300 rounded bg-gray-100 focus:border-blue-800"
+          id="description"
+          name="description"
+          rows="4"
+          cols="50"
+          required
+          placeholder="description"
+        />
+
+        <input
+          class="outline-none mb-3 border py-2 px-2 w-full text-gray-600 placeholder:text-gray-300 border-gray-300 rounded bg-gray-100 focus:border-blue-800"
+          placeholder="post image"
+          type="text"
+          id="image"
+          name="image"
+          required
+        />
+
+        <textarea
+          class="outline-none mb-3 border py-2 px-2 w-full text-gray-600 placeholder:text-gray-300 border-gray-300 rounded bg-gray-100 focus:border-blue-800"
+          id="content"
+          name="content"
+          rows="4"
+          cols="50"
+          required
+          placeholder="post content"
+        ></textarea>
+        <button
+          type="submit"
+          class="ouline-none bg-blue-800 text-white py-2 text-center text-md w-full rounded hover:bg-transparent border hover:border-blue-800 hover:text-blue-800 transition"
+        >
+          create post
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
